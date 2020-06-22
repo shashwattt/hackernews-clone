@@ -122,8 +122,8 @@ app.get("/api/news", (req, res) => {
 
 app.get("*", (req, res, next) => {
 	const activeRoute = routes.find((route) => matchPath(req.url, route));
-
-	const requestInitialData = activeRoute.component.requestInitialData && activeRoute.component.requestInitialData();
+	console.log('req', req.query);
+	const requestInitialData = activeRoute.component.requestInitialData && activeRoute.component.requestInitialData(req.query);
 
 	Promise.resolve(requestInitialData)
 		.then((initialData) => {
