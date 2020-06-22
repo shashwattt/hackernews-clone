@@ -1,1 +1,2 @@
 # hackernews-clone
+init git
