@@ -1,0 +1,37 @@
+{
+	"name": "hackernews-clone",
+	"version": "1.0.0",
+	"description": "Learning and testing",
+	"main": "index.js",
+	"repository": "https://shashwattt@github.com/shashwattt/hackernews-clone.git",
+	"author": "Shashwat Singh <shashwata1906@gmail.com>",
+	"scripts": {
+		"start-dev": "NODE_ENV=development webpack -w & NODE_ENV=development nodemon server.js"
+	},
+	"license": "MIT",
+	"dependencies": {
+		"cors": "^2.8.5",
+		"express": "^4.17.1",
+		"isomorphic-fetch": "^2.2.1",
+		"lodash.orderby": "^4.6.0",
+		"node-time-ago": "^1.0.0",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
+		"react-router-dom": "^5.2.0",
+		"serialize-javascript": "^4.0.0",
+		"source-map-support": "^0.5.19"
+	},
+	"devDependencies": {
+		"autoprefixer": "^9.8.2",
+		"babel-core": "^6.26.3",
+		"babel-loader": "^8.1.0",
+		"babel-preset-react-app": "^9.1.2",
+		"css-loader": "^0.28.11",
+		"extract-text-webpack-plugin": "^4.0.0-beta.0",
+		"file-loader": "^6.0.0",
+		"nodemon": "^2.0.4",
+		"postcss-loader": "^3.0.0",
+		"webpack": "^4.43.0",
+		"webpack-cli": "^3.3.12"
+	}
+}
