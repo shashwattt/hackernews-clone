@@ -133,7 +133,6 @@ app.get("*", (req, res, next) => {
 					<App />
 				</StaticRouter>
 			);
-
 			res.send(`
       <!DOCTYPE html>
       <html>

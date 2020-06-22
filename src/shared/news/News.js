@@ -4,7 +4,14 @@ import NewsList from "./NewsList";
 import "isomorphic-fetch";
 
 const News = (props) => {
-	const [news, setNews] = useState(null);
+	console.log('props', props);
+	let initList = null;
+
+	if(!__isBrowser__){
+		initList = (props.staticContext && props.staticContext.initialData && props.staticContext.initialData.hits);
+	}
+	const [news, setNews] = useState(initList);
+	
 	useEffect(() => {
 		console.log('Didmount Effect')
 
@@ -12,8 +19,6 @@ const News = (props) => {
 		if (__isBrowser__) {
 			initialData = window.__initialData__;
 			delete window.__initialData__;
-		} else {
-			initialData = props.staticContext.initialData;
 		}
 		console.log("initialData", initialData);
 		setNews(initialData && initialData.hits);
