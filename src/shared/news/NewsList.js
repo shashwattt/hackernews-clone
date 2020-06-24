@@ -1,10 +1,39 @@
 import React, { Component } from "react";
+import { useHistory } from "react-router-dom";
 import timeAgo from "node-time-ago";
 import "./NewsList.css";
+import routes from "../routes";
+import { getUrlParameter } from "../utils/jsHelper";
 
 
 const NewsList = ({news}) => {
-	console.log('news', news);
+	const history = useHistory();
+	const { location: { search } } = history;
+
+	console.log('history', history);
+
+	const changePageNumber = (inc) => {
+		let currentPage = 0;
+		if(search){
+			currentPage = parseInt(getUrlParameter(search).page);
+		}
+		if(inc){
+			//Increment page by 1
+			history.push({
+				pathname: '/',
+  				search: '?page=' + (currentPage + 1)
+			})
+		}else {
+			//decrement page by 1
+			if(currentPage > 0){
+				history.push({
+					pathname: '/',
+					  search: '?page=' + (currentPage - 1)
+				})
+			}
+		}
+	}
+	// console.log('news', news);
 	return (
 		<div className="newslist">
 			<div className="header">
@@ -14,16 +43,12 @@ const NewsList = ({news}) => {
 				<div className="sort">
 					Pagination:{" "}
 					<a
-						href="#"
-						// className={this.state.sortOrder === "upvotes" && "sort-selected"}
-						onClick={()=> {}}>
+						onClick={()=> changePageNumber(false)}>
 					 	{'<< '}Previous
 					</a>
 					|
 					<a
-						href="#"
-						// className={this.state.sortOrder === "date" && "sort-selected"}
-						onClick={()=> {}}>
+						onClick={()=> changePageNumber(true)}>
 						Next >> 
 					</a>
 				</div>

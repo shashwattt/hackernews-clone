@@ -5,7 +5,7 @@ import "isomorphic-fetch";
 import { getUrlParameter, serialize } from "../utils/jsHelper";
 
 const News = (props) => {
-	console.log('props', props);
+	console.log('Comonent', props);
 	const { location: { search } } = props;
 	let initList = null;
 
@@ -16,17 +16,21 @@ const News = (props) => {
 	const [page, setPage] = useState(search && getUrlParameter(search).page);
 	useEffect(() => {
 		console.log('Didmount Effect')
-
+		
 		let initialData;
 		if (__isBrowser__) {
 			initialData = window.__initialData__;
 			delete window.__initialData__;
 		}
-		console.log("initialData", initialData);
-		setNews(initialData && initialData.hits);
+		if(initialData && initialData.hits){
+			setNews(initialData && initialData.hits);
+		}else {
+			News.requestInitialData(getUrlParameter(search)).then((data) => {setNews(data.hits)});
+		}
 	}, []);
 
 	useEffect(() => {
+		console.log('Search Effect')
 		if(search && search !== '' && getUrlParameter(search).page !== page){
 			setPage(getUrlParameter(search).page);
 			News.requestInitialData(getUrlParameter(search)).then(response => {
@@ -34,13 +38,6 @@ const News = (props) => {
 			})
 		}
 	}, [search])
-
-	useEffect(() => {
-		console.log('News Effect')
-		if(!news){
-			News.requestInitialData().then((data) => {console.log(data); setNews(data.hits)});
-		}
-	}, [news]);
 
 	return <NewsList news={news} />;
 }
