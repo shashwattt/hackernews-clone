@@ -1,70 +1,51 @@
-import React, { Component } from "react";
-import { useHistory } from "react-router-dom";
-import timeAgo from "node-time-ago";
+import React, { useEffect, useState } from "react";
 import "./NewsList.css";
-import routes from "../routes";
-import { getUrlParameter } from "../utils/jsHelper";
+import NewsItem from "./NewsItem";
+import Paginator from "./Paginator";
 
 
-const NewsList = ({news}) => {
-	const history = useHistory();
-	const { location: { search } } = history;
+const NewsList = ({news, localData, setLocalData}) => {
+	const [localDataMap, setLocalDataMap] = useState({});
 
-	console.log('history', history);
+	useEffect(()=> {
+		const map = localData && localData.reduce((obj, item) => {
+			obj[item.objectID] = item;
+			return obj;
+		}, {});
+		setLocalDataMap(map);
+	}, [localData])
 
-	const changePageNumber = (inc) => {
-		let currentPage = 0;
-		if(search){
-			currentPage = parseInt(getUrlParameter(search).page);
-		}
-		if(inc){
-			//Increment page by 1
-			history.push({
-				pathname: '/',
-  				search: '?page=' + (currentPage + 1)
-			})
-		}else {
-			//decrement page by 1
-			if(currentPage > 0){
-				history.push({
-					pathname: '/',
-					  search: '?page=' + (currentPage - 1)
-				})
-			}
-		}
+
+	const updateLocalData = (item) => {
+		var obj = { ...localDataMap };
+		obj[item.objectID] = item;
+		 
+		setLocalDataMap(obj);
 	}
-	// console.log('news', news);
+
 	return (
 		<div className="newslist">
 			<div className="header">
 				<div className="header-title">
 					<strong>Hacker news</strong>
 				</div>
-				<div className="sort">
-					Pagination:{" "}
-					<a
-						onClick={()=> changePageNumber(false)}>
-					 	{'<< '}Previous
-					</a>
-					|
-					<a
-						onClick={()=> changePageNumber(true)}>
-						Next >> 
-					</a>
-				</div>
+				<Paginator />
+				
 			</div>
-			{news &&
-				news.map((post, index) => (
-					<div key={post.objectID} className="news-item">
-						<p>
-							<span className="news-position">{index + 1}. </span> {post.title}{" "}
-							<small>(by {post.author})</small>
-						</p>
-						<small className="news-details">
-							{post.relevancy_score} upvotes | {timeAgo(post.created_at)}
-						</small>
-					</div>
-				))}
+			{news && news.map((post, index) => {
+					if(localDataMap && localDataMap[post.objectID]){
+						post = {...post, ...localDataMap[post.objectID]}
+					}
+					return(
+						<NewsItem 
+							post={post} 
+							key={post.objectID}
+							index={index} 
+							updateLocalData={updateLocalData} 
+						/>
+					)
+				})};
+								
 		</div>
 	);
 }

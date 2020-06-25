@@ -17,14 +17,14 @@
 	float: left;
 }
 
-.sort {
+.paginator {
 	float: right;
 	font-size: 13px;
 	color: #c6b0f1;
 	margin: 4px 15px 0 0;
 }
 
-.sort a {
+.paginator a {
 	text-decoration: none;
 	margin: 0 5px;
 	color: #c6b0f1;
@@ -54,10 +54,20 @@
 
 .news-details {
 	display: block;
-	margin-left: 40px;
+	margin-left: 88px;
 	margin-top: -12px;
 }
-* {
+
+.upvote-news{
+	margin: 0 24px;
+	cursor: pointer;
+}
+
+.hide-news{
+	font-size: .6em;
+    margin: 0 24px;
+    cursor: pointer;
+}* {
 	box-sizing: border-box;
 }
 

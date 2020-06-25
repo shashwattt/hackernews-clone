@@ -6,7 +6,7 @@
 	"repository": "https://shashwattt@github.com/shashwattt/hackernews-clone.git",
 	"author": "Shashwat Singh <shashwata1906@gmail.com>",
 	"scripts": {
-		"start-dev": "NODE_ENV=development webpack -w & NODE_ENV=development nodemon server.js"
+		"start-dev": "NODE_ENV=development webpack -w & NODE_ENV=development nodemon -r node-localstorage/register server.js"
 	},
 	"license": "MIT",
 	"dependencies": {
@@ -14,6 +14,7 @@
 		"express": "^4.17.1",
 		"isomorphic-fetch": "^2.2.1",
 		"lodash.orderby": "^4.6.0",
+		"node-localstorage": "^2.1.6",
 		"node-time-ago": "^1.0.0",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",

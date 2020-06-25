@@ -3,27 +3,32 @@ import {withRouter} from "react-router";
 import NewsList from "./NewsList";
 import "isomorphic-fetch";
 import { getUrlParameter, serialize } from "../utils/jsHelper";
+import { fetchNews } from "../utils/apiService";
 
 const News = (props) => {
-	console.log('Comonent', props);
 	const { location: { search } } = props;
 	let initList = null;
+	let initLocalData = null;
 
 	if(!__isBrowser__){
 		initList = (props.staticContext && props.staticContext.initialData && props.staticContext.initialData.hits);
+		initLocalData = (props.staticContext && props.staticContext.localData);
+		
 	}
 	const [news, setNews] = useState(initList);
+	const [localData, setLocalData] = useState(initLocalData);
 	const [page, setPage] = useState(search && getUrlParameter(search).page);
 	useEffect(() => {
 		console.log('Didmount Effect')
 		
-		let initialData;
+		let context;
 		if (__isBrowser__) {
-			initialData = window.__initialData__;
+			context = window.__initialData__;
 			delete window.__initialData__;
 		}
-		if(initialData && initialData.hits){
-			setNews(initialData && initialData.hits);
+		if(context && context.initialData && context.initialData.hits){
+			setNews(context.initialData.hits);
+			setLocalData(context.localData);
 		}else {
 			News.requestInitialData(getUrlParameter(search)).then((data) => {setNews(data.hits)});
 		}
@@ -39,11 +44,15 @@ const News = (props) => {
 		}
 	}, [search])
 
-	return <NewsList news={news} />;
+	return <NewsList 
+		news={news} 
+		localData={localData} 
+		setLocalData={setLocalData}
+	/>;
 }
 
 News.requestInitialData = (queryObj) => {
 	let queryParam = (queryObj && serialize(queryObj)) || '';
-	return fetch("http://hn.algolia.com/api/v1/search" + queryParam).then((response) => response.json());
+	return fetchNews(queryParam).then((response) => response.json());
 }
 export default withRouter(News);
