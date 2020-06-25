@@ -46,8 +46,7 @@ const News = (props) => {
 
 	return <NewsList 
 		news={news} 
-		localData={localData} 
-		setLocalData={setLocalData}
+		localData={localData}
 	/>;
 }
 

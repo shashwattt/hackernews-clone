@@ -4,7 +4,7 @@ import NewsItem from "./NewsItem";
 import Paginator from "./Paginator";
 
 
-const NewsList = ({news, localData, setLocalData}) => {
+const NewsList = ({news, localData }) => {
 	const [localDataMap, setLocalDataMap] = useState({});
 
 	useEffect(()=> {
@@ -44,7 +44,7 @@ const NewsList = ({news, localData, setLocalData}) => {
 							updateLocalData={updateLocalData} 
 						/>
 					)
-				})};
+				})}
 								
 		</div>
 	);
