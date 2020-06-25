@@ -5,7 +5,6 @@
     2. browser/index.js - To hydrate the application on browser
 
 - Used node-localstorage to store modified data with SSR
-- To run yarn start-dev
 - Functionalities
     1. SSR with data
     2. Pagination
@@ -15,5 +14,7 @@
     1. Graph representation
     2. Incorporate all performance parameters
     3. Unit test cases
+
+- To run yarn start-dev
 
 

@@ -1,20 +1,3 @@
-* {
-	box-sizing: border-box;
-}
-
-body {
-	padding: 0 15px;
-	font-family: sans-serif;
-}
-
-img {
-	max-width: 100%;
-	height: auto;
-}
-
-p {
-	margin: 12px 0;
-}
 .newslist {
 	background-color: #f6f6ef;
 }
@@ -24,10 +7,10 @@ p {
 }
 
 .header {
-	background-color: #6b32e1;
-	color: #fff;
-	padding: 3px;
-	height: 28px;
+	background-color: #f77575;
+    color: #fff;
+    padding: 11px;
+    height: 40px;
 }
 
 .header-title {
@@ -37,14 +20,14 @@ p {
 .paginator {
 	float: right;
 	font-size: 13px;
-	color: #c6b0f1;
+	color: #fff;
 	margin: 4px 15px 0 0;
 }
 
 .paginator a {
 	text-decoration: none;
 	margin: 0 5px;
-	color: #c6b0f1;
+	color: #fff;
 	cursor: pointer;
 }
 
@@ -84,5 +67,22 @@ p {
 	font-size: .6em;
     margin: 0 24px;
     cursor: pointer;
+}* {
+	box-sizing: border-box;
 }
+
+body {
+	padding: 0 15px;
+	font-family: sans-serif;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+p {
+	margin: 12px 0;
+}
+
 /*# sourceMappingURL=main.css.map*/
