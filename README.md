@@ -8,9 +8,10 @@
 - Functionalities
     1. SSR with data
     2. Pagination
-    3. Temporary update of upvotes, time
-    4. Temporary hide posts
-    Todo
+    3. Update upvotes & time
+    4. Hide posts
+    
+    //Todo
     1. Graph representation
     2. Incorporate all performance parameters
     3. Unit test cases
