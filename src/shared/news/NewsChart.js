@@ -40,7 +40,6 @@ const NewsChart = ({news = [], localData = {}}) => {
     },[chartRef])
     
     useEffect(() => {
-        console.log('nnn', news, localData, chart)
         const xAxis = news && news.map(item => item.objectID);
         const dataSeries = news && news.map(item => {
             if(localData && localData[item.objectID]){
