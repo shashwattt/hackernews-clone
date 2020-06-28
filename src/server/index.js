@@ -77,7 +77,8 @@ app.get("*", (req, res, next) => {
       <html>
         <head>
           <title>Hackernews Clone</title>
-          <link rel="stylesheet" href="/css/main.css">
+		  <link rel="stylesheet" href="/css/main.css">
+		  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0" defer></script>
           <script src="/bundle.js" defer></script>
           <script>window.__initialData__ = ${serialize(context)}</script>
         </head>

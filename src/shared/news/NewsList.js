@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./NewsList.css";
 import NewsItem from "./NewsItem";
+import NewsChart from "./NewsChart";
 import Paginator from "./Paginator";
-
 
 const NewsList = ({news, localData }) => {
 	const [localDataMap, setLocalDataMap] = useState({});
@@ -45,7 +45,7 @@ const NewsList = ({news, localData }) => {
 						/>
 					)
 				})}
-								
+				<NewsChart news={news} localData={localDataMap}/>	
 		</div>
 	);
 }

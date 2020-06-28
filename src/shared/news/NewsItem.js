@@ -12,11 +12,11 @@ const NewsItem = ({post, index, updateLocalData }) => {
         addon = 20 * getUrlParameter(search).page
     }
     const upvoteNewsItem = () => {
-        upvoteNews(post.objectID, post.relevancy_score + 1).then((resp) => {
+        upvoteNews(post.objectID, (post.relevancy_score || 0) + 1).then((resp) => {
             if(resp.status === 'success'){
                 updateLocalData({
                     objectID: post.objectID, 
-                    relevancy_score: parseInt(post.relevancy_score) + 1,
+                    relevancy_score: parseInt(post.relevancy_score || 0) + 1,
                     created_at: new Date().getTime(),
                 })
             }
@@ -43,7 +43,7 @@ const NewsItem = ({post, index, updateLocalData }) => {
                 <strong onClick={() => hideNewsItem()} className="hide-news">[HIDE]</strong>
             </p>
             <small className="news-details">
-                {post.relevancy_score} upvotes | {timeAgo(post.created_at)}
+                {post.relevancy_score || 0} upvotes | {timeAgo(post.created_at)}
             </small>
         </div>
     )
