@@ -32,22 +32,6 @@ const NewsChart = ({news = [], localData = {}}) => {
                         mode: 'nearest',
                         intersect: true
                     },
-                    scales: {
-                        x: {
-                            display: true,
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Posts'
-                            }
-                        },
-                        y: {
-                            display: true,
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Upvotes'
-                            }
-                        }
-                    }
                 }
             });
             chartInst.update();
