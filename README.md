@@ -10,11 +10,10 @@
     2. Pagination
     3. Update upvotes & time
     4. Hide posts
+    5. Graph representation
     
     //Todo
-    1. Graph representation
-    2. Incorporate all performance parameters
-    3. Unit test cases
+    1. Unit test cases
 
 - To run yarn start-dev
 
