@@ -1,3 +1,20 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	padding: 0 15px;
+	font-family: sans-serif;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+p {
+	margin: 12px 0;
+}
 .newslist {
 	background-color: #f6f6ef;
 	padding: 0 0 48px 0;
@@ -68,22 +85,5 @@
 	font-size: .6em;
     margin: 0 24px;
     cursor: pointer;
-}* {
-	box-sizing: border-box;
 }
-
-body {
-	padding: 0 15px;
-	font-family: sans-serif;
-}
-
-img {
-	max-width: 100%;
-	height: auto;
-}
-
-p {
-	margin: 12px 0;
-}
-
 /*# sourceMappingURL=main.css.map*/

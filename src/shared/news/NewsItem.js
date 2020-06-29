@@ -12,11 +12,11 @@ const NewsItem = ({post, index, updateLocalData }) => {
         addon = 20 * getUrlParameter(search).page
     }
     const upvoteNewsItem = () => {
-        upvoteNews(post.objectID, (post.relevancy_score || 0) + 1).then((resp) => {
+        upvoteNews(post.objectID, (post.relevancy_score || 0) + 100).then((resp) => {
             if(resp.status === 'success'){
                 updateLocalData({
                     objectID: post.objectID, 
-                    relevancy_score: parseInt(post.relevancy_score || 0) + 1,
+                    relevancy_score: parseInt(post.relevancy_score || 0) + 100,
                     created_at: new Date().getTime(),
                 })
             }
